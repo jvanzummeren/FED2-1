@@ -11,14 +11,14 @@ var SCOREAPP = SCOREAPP || {};
 // nog een keertje in een anonymous function
 
 (function(){
+  var app = SCOREAPP;
 
   // hoofdobject van de applicatie
-	SCOREAPP.main = {
+	app.main = {
 
     // functie waar de applicatie mee gestart wordt
 		init: function(){
 
-    console.log("SCOREAPP running");
 
     // als eerste de router activeren, zodat we kunnen bepalen welke pagina opgevraagd wordt
     SCOREAPP.router.init();
@@ -34,7 +34,7 @@ var SCOREAPP = SCOREAPP || {};
 	}
 
   // het router object maakt gebruik van de routie.js library om te bepalen welke pagina wordt opgevraag
-	SCOREAPP.router = {
+	app.router = {
 
     // de init functie laadt via routie de juiste pagina functie in het pages object
     init: function(){
@@ -44,23 +44,23 @@ var SCOREAPP = SCOREAPP || {};
         'game': function() {
 
           // we roepen de loadpage functie van het page object aan om de opgevraagde pagina te laden
-          SCOREAPP.page.loadPage('game');
+          app.page.loadPage('game');
 
         },
 
 
         'schedule': function() {
-          SCOREAPP.page.loadPage('schedule');
+          app.page.loadPage('schedule');
 
         },
 
         'ranking': function() {
-          SCOREAPP.page.loadPage('ranking');
+          app.page.loadPage('ranking');
 
         },
 
         '*': function() {
-          SCOREAPP.page.loadPage('game');
+          app.page.loadPage('game');
 
         }
 
@@ -75,16 +75,16 @@ var SCOREAPP = SCOREAPP || {};
 	}
 
   // het page object laadt de data voor een pagina en maakt de pagina zichtbaar
-  SCOREAPP.page = {
+  app.page = {
 
     // deze functie vult het bij de route behorende stukje template met data uit het data object
     loadPage: function(route){
 
       // we laden de data met de eval methode, dit mag omdat er niet rechtstreeks gebruikersinput wordt uitgevoerd door eval
-      var data = eval('SCOREAPP.data.'+ route);
+      var data = eval('app.data.'+ route);
 
       // met de transparancy library stoppen we de data in de gebinde elementen in het html template
-      Transparency.render(document.querySelector('[data-route=' + route + ']'), data, SCOREAPP.data.directives);
+      Transparency.render(document.querySelector('[data-route=' + route + ']'), data, app.data.directives);
 
       // nu roepen we de render methode aan van het page object
       this.render(route);
@@ -122,7 +122,7 @@ var SCOREAPP = SCOREAPP || {};
 
   // het data object bestaat nu nog vooral uit json objecten, later zal dit veranderen
 
-	SCOREAPP.data= {
+	app.data= {
 
 	  game : {
       title: "Pool A - Score: Boomsquad vs. Burning Snow",
@@ -229,7 +229,7 @@ var SCOREAPP = SCOREAPP || {};
   // ready.js zorgt ervoor dat de code pas wordt uitgevoerd als alle dom is ingeladen
   domready(function(){
      //we starten de app
-     SCOREAPP.main.init();
+     app.main.init();
   });
 
 
