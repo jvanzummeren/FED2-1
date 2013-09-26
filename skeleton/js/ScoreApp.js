@@ -2,10 +2,14 @@
 //
 // Laad 3 pagina's
 
+// Strict modus make code more safe
+
+"use strict";
 
 // namespace is SCOREAPP
 
 var SCOREAPP = SCOREAPP || {};
+
 
 
 // nog een keertje in een anonymous function
