@@ -1,0 +1,23 @@
+
+
+<table class="table striped">
+  <thead>
+    <tr>
+      <th>tests</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% _.each(pools, function(pool){ %>
+
+     <tr>
+      <td><%= pool.get('name') %> </td>
+      <td></td>
+      <td></td>
+    </tr>
+
+   <% }); %>
+
+  </tbody>
+</table>

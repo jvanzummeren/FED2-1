@@ -1,0 +1,14 @@
+
+
+var Pools = Backbone.Collection.extend({
+  url:'pools/',
+  parse: function(response) {
+    return response.objects;
+  }
+});
+
+var Pool = Backbone.Collection.extend({
+   url:'pools/',
+  urlRoot:"pools/"
+
+});

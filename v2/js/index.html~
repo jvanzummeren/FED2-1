@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Frisbee App</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap-theme.min.css">
+
+  </head>
+
+
+  <body class="container">
+
+     <header>
+      <h1>Kawaii</h1>
+      <nav>
+        <ul>
+          <li><a href="#/games" class="btn btn-primary">games</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <section class="page">
+
+
+    <script type="text/template" id="pool-list-template">
+
+      <table class="table striped">
+        <thead>
+          <tr>
+            <th>tests</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% _.each(pools, function(pool){ %>
+
+           <tr>
+            <td><%= pool.get('name') %> </td>
+            <td></td>
+            <td></td>
+          </tr>
+
+         <% }); %>
+
+        </tbody>
+
+    </script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="libs/require.js"></script>
+    <script src="libs/backbone-min.js"></script>
+
+    <script>
+
+      $.ajaxPrefilter( function( options, originalOptions, jqXHR ){
+        options.url = "https://api.leaguevine.com/v1/" + options.url;
+
+      });
+
+      var Pools = Backbone.Collection.extend({
+        url:'pools/',
+        parse: function(response) {
+          return response.objects;
+        }
+      });
+
+      var Pool = Backbone.Collection.extend({
+        urlRoot:"pools/"
+
+      })
+
+      var PoolList = Backbone.View.extend({
+
+        el: '.page',
+        render: function(){
+
+          var t = this;
+          var pools = new Pools();
+          pools.fetch({
+            data:{'tournament_id': 19389},
+            success: function(pools){
+              var template = _.template($('#pool-list-template').html(), {pools: pools.models});
+              t.$el.html(template);
+            },
+            error: function(error){
+
+
+            }
+
+
+          });
+
+
+        }
+
+      });
+
+      var PoolList = Backbone.View.extend({
+
+        el: '.page',
+        render: function(id){
+
+          var t = this;
+          var pool = new Pool();
+          pool.id
+          pool.fetch({
+            data:{'id': id},
+            success: function(pools){
+              var template = _.template($('#pool-list-template').html(), {pools: pools.models});
+              t.$el.html(template);
+            },
+            error: function(error){
+
+
+            }
+
+
+          });
+
+
+        }
+
+      });
+
+
+
+
+
+
+
+      var poolList = new PoolList();
+
+
+
+      var Router = Backbone.Router.extend({
+        routes: {
+          '': 'pools',
+          'pools': 'pools',
+          'pool/:id':'pool',
+          'games': 'games'
+
+        }
+
+
+      });
+
+
+
+      var router = new Router();
+      router.on('route:pools', function(){
+
+        poolList.render();
+
+      });
+
+       router.on('route:pool', function(id){
+
+        poolView.render(id);
+
+      });
+
+
+
+
+      Backbone.history.start();
+
+
+
+    </script>
+
+  </body>
+
+</html>

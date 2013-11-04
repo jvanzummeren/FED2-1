@@ -1,0 +1,38 @@
+<% console.log(games) %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+
+      <th>Time</th>
+      <th>Team 1</th>
+      <th>Team 2</th>
+      <th>Score</th>
+      <th>More</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<%var date=""%>
+
+<% _.each(games, function(game){%>
+
+<% if(date != game.get('date')){ %>
+  <tr>
+    <th colspan="5"><%= game.get('day') %> <small> <%= game.get('date') %></small></th>
+  </tr>
+  <% date = game.get('date')  %>
+<% }%>
+
+
+     <tr>
+      <td><%= game.get('time') %></td>
+      <td <% if(game.get('winner_id') == game.get('team_1').id){ %> class="winner"<% } %> > <%= game.get('team_1').name%></td>
+      <td <% if(game.get('winner_id') == game.get('team_2').id){ %> class="winner"<% } %> ><%= game.get('team_2').name%></td>
+      <td><%= game.get('team_1_score') +'-'+ game.get('team_2_score')  %></td>
+      <td><button class="button game" id="<%= game.get('id')%>">></button></td>
+    </tr>
+<%});%>
+
+  </tbody>
+</table>

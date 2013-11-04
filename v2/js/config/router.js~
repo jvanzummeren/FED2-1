@@ -1,0 +1,35 @@
+console.log('router.js');
+
+var Router = Backbone.Router.extend({
+  routes: {
+    '': 'pools',
+    'pools': 'pools',
+    'pool/:id':'pool',
+    'games': 'games'
+
+  }
+
+
+});
+
+
+
+var router = new Router();
+router.on('route:pools', function(){
+
+  console.log('pools route');
+
+  require(['views/pools'],function(pool){
+
+    poolList.render();
+
+  })
+
+
+});
+
+ router.on('route:pool', function(id){
+
+  poolView.render(id);
+
+});

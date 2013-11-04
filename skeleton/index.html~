@@ -9,7 +9,7 @@
     <script src="lib/routie.min.js"></script>
     <script src="lib/ready.min.js"></script>
     <script src="lib/transparency.min.js"></script>
-    <script src="lib/reqwest.min.js"></script>
+    <script src="lib/oboe.min.js"></script>
 
     <script src="js/ScoreApp.js"></script>
   </head>

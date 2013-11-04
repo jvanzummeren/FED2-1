@@ -1,0 +1,67 @@
+console.log('views/pools.js')
+
+var PoolList = Backbone.View.extend({
+
+    el: '.page',
+    render: function(){
+
+
+
+      require(['cols/pools','text!views/templates/pools.html'], function(pools,templateFile){
+
+        console.log('uolo');
+
+        var t = this;
+        var pools = new Pools();
+        pools.fetch({
+          data:{'tournament_id': 19389},
+          success: function(pools){
+            var template = _.template(templateFile, {pools: pools.models});
+            t.$el.html(template);
+          },
+          error: function(error){
+
+
+          }
+
+
+        });
+
+      });
+
+
+    }
+
+  });
+
+
+
+  var PoolShow = Backbone.View.extend({
+
+    el: '.page',
+    render: function(id){
+
+      var t = this;
+      var pool = new Pool();
+      pool.id
+      pool.fetch({
+        data:{'id': id},
+        success: function(pools){
+          var template = _.template($('#pool-list-template').html(), {pools: pools.models});
+          t.$el.html(template);
+        },
+        error: function(error){
+
+
+        }
+
+
+      });
+
+
+    }
+
+  });
+
+
+  var poolList = new PoolList();

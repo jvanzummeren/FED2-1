@@ -1,0 +1,246 @@
+*,html
+{
+  padding:0;
+  margin:0;
+  border:none;
+  box-sizing:border-box;
+
+
+}
+
+body
+{
+  position:relative;
+  width:100%;
+  font-family:sans-serif;
+}
+
+header{
+  background:black;
+  color:white;
+  width:100%;
+
+  padding:0.5em;
+  border-bottom:white 0.2em solid;
+}
+
+header > h1{
+
+  color:#577;
+
+}
+
+header h1 small
+{
+  margin-left:0.3em;
+  text-shadow:0.0em 0.0em 0.2em #577;
+  color:black;
+}
+
+.button
+{
+  font-size:1.4em;
+  padding:0.5em;
+  border-radius:0.2em;
+  background:#755;
+  color:white;
+  text-decoration:none;
+  margin:0.3em;
+
+
+}
+
+.transition
+{
+  position:relative;
+  clear:both;
+  overflow:hidden;
+}
+
+.page
+{
+
+  -webkit-transition:all 0.35s ease-in-out;
+  -webkit-transform: translate3d(0,0,0);
+  position:relative;
+  background:#ccc;
+
+
+}
+
+.page > h1
+{
+  padding:0.5em;
+  padding-top:1em;
+  color:#333;
+  text-align:center;
+  border-bottom:#ddd solid 0.3em;
+
+
+
+}
+
+.page h2
+{
+
+  margin:0.5em;
+}
+
+.oldPage
+{
+  -webkit-transition:all 2s ease-in-out;
+  -webkit-transform: translate3d(100%,0,0);
+  z-index:1000;
+  position:absolute;
+  top:0em;
+  left:0em;
+  width:100%;
+}
+
+
+
+
+
+
+nav
+{
+
+
+margin:1em auto;
+}
+
+
+
+
+
+
+nav ul
+{
+  display:block;
+  list-style:none;
+
+}
+
+nav ul li
+{
+  display:inline;
+
+}
+
+table
+{
+  width:100%;
+  border-collapse:collapse;
+  background:#333;
+  padding:1em;
+
+}
+
+table td
+{
+  border-bottom:0.2em solid #666;
+  padding:0.5em;
+  color:#ddd;
+
+}
+
+table.poolGames td:nth-child(3)
+{
+  width:20%;
+}
+
+table td.winner
+{
+color:red;
+
+}
+
+table tr:nth-child(2n+1){
+  background:#555;
+}
+
+table th
+{
+  background:#577;
+  text-align:left;
+  color:#bbb;
+  font-weight:300;
+  padding:0.5em;
+  border-bottom:0.2em solid #bbb;
+
+}
+
+table.pool td:first-child
+{
+  width:50%;
+}
+
+table.game td
+{
+  width:33%;
+}
+
+input[type="number"]
+{
+  padding:0.3em;
+  font-size:2em;
+  width:100%;
+  border:#333 solid 0.2em;
+
+}
+
+#loading
+{
+  position:fixed;
+  top:0%;
+  left:0%;
+  z-index:1000;
+  background:rgba(128,128,128,0.8);
+
+  text-align:center;
+  height:100%;
+  width:100%;
+  -webkit-perspective: 800;
+
+
+}
+
+
+
+#loading:before
+{
+  opacity:1;
+  display:block;
+  position:absolute;
+  margin:auto;
+  top:0;left:0;bottom:0;right:0;
+  content:"Loading";
+  font-size:2em;
+  width:5em;
+  height:5em;
+  line-height:5em;
+
+  background:#f66;
+  color:#b66;
+  border:#844 solid 0.5em;
+
+
+  border-radius:100%;
+  -webkit-animation: spinner 2s infinite linear;
+  box-shadow:  inset 2em 2em 4em #600;
+
+
+}
+
+@-webkit-keyframes spinner{
+
+  0% {
+    -webkit-transform:   rotate3d(1,0,1,360deg);
+
+  }
+
+  100% {
+    -webkit-transform:  rotate3d(0,0,1,0deg);
+  }
+
+}

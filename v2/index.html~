@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Frisbee App</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap-theme.min.css">
+
+  </head>
+
+
+  <body class="container">
+
+     <header>
+      <h1>Kawaii</h1>
+      <nav>
+        <ul>
+          <li><a href="#/games" class="btn btn-primary">games</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <section class="page">
+
+
+
+
+
+    <script data-main="js/require_config.js?v12256" src="js/libs/require.js"></script>
+
+
+
+  </body>
+
+</html>

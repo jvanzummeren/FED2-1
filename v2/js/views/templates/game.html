@@ -1,0 +1,71 @@
+<%console.log(game_scores)%>
+
+<h1><span <% if(game.get('winner_id') == game.get('team_1').id){ %> class="winner"<% } %> ><%= game.get('team_1').name%></span> vs
+      <span <% if(game.get('winner_id') == game.get('team_2').id){ %> class="winner"<% } %> ><%= game.get('team_2').name%></span></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Start</th>
+
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+     <tr>
+      <td><%= game.get('day') %> <small> <%= game.get('date') %></small></td>
+      <td><%= game.get('time') %></td>
+      <td><%= game.get('team_1_score') +'-'+ game.get('team_2_score')  %></td>
+    </tr>
+
+
+
+  </tbody>
+</table>
+
+<h1>Scores</h1>
+<form class="addScore">
+  <table>
+    <tr>
+      <th><small><%= game.get('team_1').name%></small></th>
+      <th><small><%= game.get('team_2').name%></small></th>
+    </tr>
+    <tr>
+      <td><input type="number" name="team_1_score" value="<%= game.get('team_1_score')%>" /></td>
+      <td><input type="number" name="team_2_score" value="<%= game.get('team_2_score')%>" /></td>
+    </tr>
+  </table>
+
+  <button type="submit" class="button">Update</button>
+   <input type="hidden" name="game_id" value="<%= game.get('id')%>" />
+   <input type="hidden" name="is_final" value="True" />
+
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th><%= game.get('team_1').name %></th>
+      <th><%= game.get('team_2').name %></th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+<% _.each(game_scores,function(game_score){%>
+     <tr>
+      <td><%= game_score.get('niceTime') %></td>
+
+      <td><%= game_score.get('team_1_score')%></td>
+      <td><%= game_score.get('team_2_score')%></td>
+
+    </tr>
+
+<%})%>
+
+
+  </tbody>
+</table>

@@ -1,0 +1,28 @@
+define(['jquery', 'underscore', 'backbone'], function($, _, Backbone){
+
+
+
+  $.ajaxPrefilter( function( options, originalOptions, jqXHR ){
+        options.url = "https://api.leaguevine.com/v1/" + options.url;
+
+      });
+
+
+  require(['config/router'], function(router){
+
+
+
+  });
+
+
+  Backbone.history.start();
+
+
+
+
+
+
+
+
+
+});
